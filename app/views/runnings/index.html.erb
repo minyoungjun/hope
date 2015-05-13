@@ -1,34 +1,42 @@
   
   <!-- /.light-wrapper -->
   <div class="light-wrapper">
-    <div class="container inner">
+    <div class="container inner" style="padding-top:30px;">
+      <div><img src="/images/logo_f.png" style="width:30px; float:right; margin:5px;"><img src="/images/logo_t.png" style="width:30px; float:right; margin:5px;"></div>
+      <div class="clearfix"></div>
       <h1 class="text-center"><img src="/images/hope_logo.png"</h1>
       <br>
       <br>
-      <p class="lead main text-center" style="font-size:20px; word-break: keep-all;">지금까지 <span style="color:#036eb8; font-family:'Nanum Gothic';">251,682</span>번의 희망 메시지가 전달되었습니다.</p>
-      <h3 class="section-title text-center">Let's make something great together</h3>
-      <div class="text-center"/> <a href="<%=user_omniauth_authorize_path(:facebook)%>" class="btn btn-large fixed-width">캠페인 참여</a> <a href="/gives/campaigns" class="btn btn-large btn-maroon fixed-width">기부하기</a> </div>
+      <p class="lead text-center" style="font-size:15px; word-break: keep-all;">
+        지금까지 <span style="color:#036eb8; font-family:'Nanum Gothic';"><%=@all_count%></span>번의 희망 메시지가 전달되었습니다.</p>
+      <div class="clearfix" style="margin:0 auto;">
+        <div class="counter-wrapper">
+          <ul class="flip-counter small" id="myCounter"style="margin-left:-20px;"></ul>
+        </div>
+      </div>
+      <br>
+      <p class="lead text-center" style="font-size:15px; word-break: keep-all; margin-bottom: 5px;">
+        <img src="/images/like.png"/> <%=@like_count%>명의 좋아요, <img src="/images/comment.png"/> <%=@comment_count%>개의 댓글, <img src="/images/share.png"/> <%=@share_count%>번의 공유가 모여</p><p class="text-center" style="font-size:20px;">따뜻한 희망을 전합니다.</p>
+
       <div class="text-center" style="margin-top: 27px;">
-        <div class="fb-like" data-href="https://facebook.com/runningcamel" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+        <div class="fb-like" data-href="https://www.facebook.com/sbsnow/videos/993180604026952" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
     </div>
 
-    </div>
+  </div>
 
     <!-- /.container --> 
  <div class="portfolio full-portfolio">
       <div class="isotope items">
-
-        <%User.all.shuffle[0..19].each do |user|%>
-        <div class="item grid-sizer web" style="background:url('https://graph.facebook.com/v2.1/<%=user.identities.first.uid%>/picture?type=large');background-size: 100%;background-position: center; ">
-          <figure><a href="https://www.facebook.com/<%=user.identities.first.uid%>" style="color:white;">
+        <%@users.each do |content|%>
+        <%user_id = content["id"]%>
+        <div class="item grid-sizer web" style="background:url('https://graph.facebook.com/v2.1/<%=user_id%>/picture?type=large');background-size: 100%;background-position: center; ">
+          <figure><a href="https://www.facebook.com/<%=user_id%>" style="color:white;">
             <div class="text-overlay">
-              <div class="info"><%=user.name%><%if user.hometown != nil%>(<%=user.hometown%>)<%end%><%if user.pledge != nil%><br><%=user.pledge%><%end%></div>
+              <div class="info"><%=content["name"]%></div>
             </div>
             <img src="/style/images/art/pm2.jpg" alt="" style="opacity: 0;filter: alpha(opacity=0);"/></a></figure>
         </div>
       <%end%>
-
-
       </div>
     </div>
 
@@ -37,98 +45,55 @@
 
   <div class="dark-wrapper">
     <div class="container inner">
-      <h3 class="section-title pull-left">Latest Instagram Shots about #giverunner #giverunners #기부러너 #기부러너즈</h3>
-      <a href="http://instagram.com/seunghunkim" class="link-out pull-right"><i class="icon-s-instagram rp5"></i>Go to Giverunner Instagram Page</a>
-      <div class="clearfix"></div>
-      <div class="owl-gallery">
-        <%0.upto(9) do |x|%>
-          <div class="item">
-            <figure><a href="<%=@insta_link[x]%>">
-              <div class="text-overlay">
-                <div class="info"><span>See Instagram</span></div>
-              </div>
-              <img src="<%=@insta_thumb[x]%>" alt="" /> </a></figure>
-          </div>
-        <%end%>
-      </div>
-    </div>
-  </div>
-
- <div class="light-wrapper">
-    <div class="container inner">
-      <h3 class="section-title pull-left">Sports Chariting Group Recent Postings</h3>
-      <a href="http://www.facebook.com/groups/sportscharitydream" class="link-out pull-right"><i class="icon-s-facebook rp5"></i>Go to Giverunner Facebook Group</a>
-      <div class="clearfix"></div>
-      <div class="latest-blog-wrapper">
-        <div class="latest-blog isotope isotope js-isotope row" data-isotope-options='{ "layoutMode": "fitRows", "itemSelector": ".post" }'>
-
-          <%0.upto(3) do |x|%>
-            <div class="post col-sm-12 col-md-6 row">
-              <div class="col-sm-4">
-                <figure class="icon-overlay"><a href="<%=@fb_link[x]%>"><img src="<%if @fb_thumb[x] != nil%><%=@fb_thumb[x]%><%else%>/images/logo_thumb.png<%end%>" alt="" /></a></figure>
-              </div>
-              <div class="col-sm-8 post-content">
-                <h3 class="post-title"><a href="https://www.facebook.com/<%=@fb_name[x]["id"]%>"><%=@fb_name[x]["name"]%></a></h3>
-                <div class="meta"><span class="date"><%=@fb_time[x]%></span> <span class="comments"><a href="#"><%=@fb_comments[x]%> Comments</a></span></div>
-                <a style ="color:#2f2f2f;"href="<%=@fb_link[x]%>"><p><%if @fb_text[x] != nil && @fb_text[x].length > 80 %><%=@fb_text[x][0..79]%>...<%else%><%=@fb_text[x]%><%end%></p></a>
-              </div>
-            </div>
-          <%end%>
-
-
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="parallax parallax1 customers">
-    <div class="container inner text-center">
-      <h3 class="section-title text-center">What Do We Think</h3>
-      <div class="testimonials owl-carousel thin">
-        <div class="item">
-          <blockquote>
-            <p>No one has ever become poor by giving.<small>Anne Frank</small></p>
-          </blockquote>
-        </div>
-        <!-- /.item -->
-        <div class="item">
-          <blockquote>
-            <p>'기부러너'는 스포츠 활동을 통하여 기부하는 기쁨을 많은 사람이 함께 누렸으면 좋겠다는 생각에서 시작한 프로젝트입니다. 저는 이 프로젝트를 통해 모든 사람들이 달리기, 걷기, 등산, 사이클링과 같은 다양한 운동을 통해 기부를 할 수 있는 세상을 만들고 싶습니다. 또한, 운동을 좋아하지 않는 사람도 다른 사람의 프로젝트를 응원함으로써 간접적으로 도움을 줄 수 있습니다. 프로젝트 진행자는 SNS와 본 사이트를 통해 프로젝트의 진행사항을 실시간으로 올려, 응원자들과 함께하는 멋진 기부 문화를 만들어갈 것입니다.</p>
-          </blockquote>
-        </div>
-        <!-- /.item -->
-        <div class="item">
-          <blockquote>
-            <p>Give + Runner is a social project that I started to combine my passions with charity, exercise, and people. With this project, I hope to create an environment where everybody can donate with sports activities like running, walking, climbing and cycling. Also someone who is not fond of doing sports activities themselves can help by supporting others' projects. Project "runners" can share real-time progress of their projects via our website and social network services. This will become an another donation led by all.</p>
-          </blockquote>
-        </div>
-        <!-- /.item --> 
-      </div>
-      <!-- /.testimonials --> 
+      <div class="fb-post" data-href="https://www.facebook.com/sbsnow/videos/993180604026952/" data-width="350"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/sbsnow/videos/993180604026952/"><p>[&#039;&#xc88b;&#xc544;&#xc694;&#039;&#xb9cc; &#xb204;&#xb974;&#xba74; &#xae30;&#xbd80;&#xac00; &#xb41c;&#xb2e4;!] 
+              #&#xb2ec;&#xc0e4;&#xbcb3; , &#xbc30;&#xc6b0; #&#xae40;&#xc2ac;&#xae30; &#xc640; &#xd568;&#xaed8;&#xd558;&#xb294; #&#xd76c;&#xb9dd;&#xd1a1;&#xd1a1;&#xcea0;&#xd398;&#xc778;! 
+              #&#xc5ec;&#xb7ec;&#xbd84;&#xc758; &#xc88b;&#xc544;&#xc694;,&#xb313;&#xae00;,&#xacf5;&#xc720;&#xd558;&#xae30; &#xd55c; &#xbc88;&#xb9c8;&#xb2e4; 100&#xc6d0;&#xc758; &#xd6c4;&#xc6d0;&#xae08;&#xc774; &#xc801;&#xb9bd;&#xb429;&#xb2c8;&#xb2e4;! 
+              #&#x2192; &#xd6c4;&#xc6d0;&#xd604;&#xd669; :...</p>Posted by <a href="https://www.facebook.com/sbsnow">SBS</a> on <a href="https://www.facebook.com/sbsnow/videos/993180604026952/">2015년 5월 11일 월요일</a></blockquote></div></div>
+      <div class="fb-post" data-href="https://www.facebook.com/sbsnow/videos/993175194027493/" data-width="350"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/sbsnow/videos/993175194027493/"><p>[&#039;&#xc88b;&#xc544;&#xc694;&#039;&#xb9cc; &#xb204;&#xb974;&#xba74; &#xae30;&#xbd80;&#xac00; &#xb41c;&#xb2e4;!] 
+              #&#xd2f4;&#xd0d1; #&#xb2c8;&#xc5d8; &#xacfc; &#xd568;&#xaed8;&#xd558;&#xb294; #&#xd76c;&#xb9dd;&#xd1a1;&#xd1a1;&#xcea0;&#xd398;&#xc778;! 
+              #&#xc5ec;&#xb7ec;&#xbd84;&#xc758; &#xc88b;&#xc544;&#xc694;,&#xb313;&#xae00;,&#xacf5;&#xc720;&#xd558;&#xae30; &#xd55c; &#xbc88;&#xb9c8;&#xb2e4; 100&#xc6d0;&#xc758; &#xd6c4;&#xc6d0;&#xae08;&#xc774; &#xc801;&#xb9bd;&#xb429;&#xb2c8;&#xb2e4;! 
+              #&#x2192; &#xd6c4;&#xc6d0;&#xd604;&#xd669; :...</p>Posted by <a href="https://www.facebook.com/sbsnow">SBS</a> on <a href="https://www.facebook.com/sbsnow/videos/993175194027493/">2015년 5월 11일 월요일</a></blockquote></div></div>
+      <div class="fb-post" data-href="https://www.facebook.com/sbsnow/videos/991635970848082/" data-width="350"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/sbsnow/videos/991635970848082/"><p>[&#039;&#xc88b;&#xc544;&#xc694;&#039;&#xb9cc; &#xb204;&#xb974;&#xba74; &#xae30;&#xbd80;&#xac00; &#xb41c;&#xb2e4;!] 
+              #&#xd76c;&#xb9dd;&#xd1a1;&#xd1a1;&#xcea0;&#xd398;&#xc778; &#xb3d9;&#xc601;&#xc0c1;&#xc744; &#039;&#xc88b;&#xc544;&#xc694;&#039; &#xd574;&#xc8fc;&#xc138;&#xc694;! 
+              #&#xc5ec;&#xb7ec;&#xbd84;&#xc758; &#xc88b;&#xc544;&#xc694;,&#xb313;&#xae00;,&#xacf5;&#xc720;&#xd558;&#xae30; &#xd55c; &#xbc88;&#xb9c8;&#xb2e4; 100&#xc6d0;&#xc758; &#xd6c4;&#xc6d0;&#xae08;&#xc774; &#xc801;&#xb9bd;&#xb429;&#xb2c8;&#xb2e4;! 
+              #&#x2192; &#xd6c4;&#xc6d0;&#xd604;&#xd669; :...</p>Posted by <a href="https://www.facebook.com/sbsnow">SBS</a> on <a href="https://www.facebook.com/sbsnow/videos/991635970848082/">2015년 5월 8일 금요일</a></blockquote></div></div>
       
+
+      <div class="clearfix"></div>
     </div>
-    <!-- /.container --> 
   </div>
-  <!-- /.parallax -->
+
 
 <div class="light-wrapper">
   <div class="container inner">
-    <h3 class="section-title">후원 대상 기관</h3>
+    <h3 class="section-title">SBS 희망TV와 함께하는 후원 캠페인</h3>
     <div class="owl-blog">
-      <% Campaign.where(:authorized => true).shuffle.each do |campaign|%>
         <div class="post">
-          <figure class="icon-overlay"><a href="<%=campaign.site_url%>"><img src="<%=campaign.logo.url(:medium)%>"/></a></figure>
-          <div class="post-content">
-            <h3 class="post-title"><a href="<%=campaign.site_url%>"><%=campaign.title%></a></h3>
-            <div class="meta"><span class="date"><%=campaign.category%></span> <span class="comments"><a href="#"><%=campaign.fundraisers.count%> followers</a></span></div>
-          </div>
+          <figure class="icon-overlay"><a href="http://standus.net/?doc=main"><img src="/images/banner1.jpeg"/></a></figure>
         </div>
-      <%end%>
+        <div class="post">
+          <figure class="icon-overlay"><a href="http://www.goodpeople.or.kr/"><img src="/images/banner2.jpeg"/></a></figure>
+        </div>
+        <div class="post">
+          <figure class="icon-overlay"><a href="http://hope.miral.org/"><img src="/images/banner3.jpeg"/></a></figure>
+        </div>
+        <div class="post">
+          <figure class="icon-overlay"><a href="https://www.sc.or.kr/campaign/main.do?BITING=Y"><img src="/images/banner4.jpeg"/></a></figure>
+        </div>
     </div>
   </div>
 </div> 
 
 
   
+<script>
+
+  $(function(){
+
+    var myCounter = new flipCounter('myCounter', {value: 0, inc: 100, pace: 1, auto: true, upper: <%=@all_count*100%>});
+
+
+  });
+</script>
     
   

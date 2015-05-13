@@ -20,18 +20,33 @@
 <link href="/style.css" rel="stylesheet">
 <link href="/style/css/color/green.css" rel="stylesheet">
 <link href='http://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/themes/vader/jquery-ui.css"/>
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:400,500,700">
 <link href="/style/type/fontello.css" rel="stylesheet">
 <link href="/style/type/budicons.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/css/style.css"/>
   <%= stylesheet_link_tag    'application', media: 'all'%>
   <%= javascript_include_tag 'application'%>
-  <div id="fb-root"></div>
-  <script>(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&appId=898299920181621&version=v2.0";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));</script>
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-62716429-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.3&appId=571970066269489";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+  <script type="text/javascript" src="/js/flipcounter.js"></script>
+  <script type="text/javascript" src="/js/modernizr.custom.21954.js"></script>
   <%= csrf_meta_tags %>
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -39,7 +54,7 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
       <![endif]-->
 </head>
-<body class="full-layout">
+<body class="full-layout" style="width:100%; padding:0px;">
   <div class="body-wrapper animsition">
       
 
@@ -61,7 +76,7 @@
   </footer>
   <!-- /footer --> 
 
-  </div>
+</div>
 
 <!-- /.body-wrapper --> 
 <script src="/style/js/jquery.min.js"></script> 

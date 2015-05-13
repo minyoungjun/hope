@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141031055324) do
+ActiveRecord::Schema.define(version: 20150513175347) do
 
   create_table "campaigns", force: true do |t|
     t.integer  "user_id"
@@ -72,6 +72,12 @@ ActiveRecord::Schema.define(version: 20141031055324) do
     t.string   "upload_content_type"
     t.integer  "upload_file_size"
     t.datetime "upload_updated_at"
+  end
+
+  create_table "posts", force: true do |t|
+    t.string   "post_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "projects", force: true do |t|
