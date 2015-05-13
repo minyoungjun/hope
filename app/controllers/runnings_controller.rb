@@ -41,7 +41,9 @@ class RunningsController < ApplicationController
       @fb_time << Time.parse(fb_doc_now["created_time"]).to_formatted_s(:short)
       @fb_thumb << fb_doc_now["picture"]
       @fb_link << fb_doc_now["actions"][0]["link"]
-      @fb_text << fb_doc_now["message"].gsub("\n","")
+      if fb_doc_now["message"] != nil
+        @fb_text << fb_doc_now["message"].gsub("\n","")
+      end
       if fb_doc_now["comments"] != nil
         @fb_comments << fb_doc_now["comments"].count
       else

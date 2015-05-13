@@ -41,63 +41,7 @@
 </head>
 <body class="full-layout">
   <div class="body-wrapper animsition">
-    <div class="navbar default centered">
-      <div class="navbar-header">
-        <div class="container basic-wrapper"> <a class="btn responsive-menu pull-right" data-toggle="collapse" data-target=".navbar-collapse"><i></i></a>
-          <div class="navbar-brand text-center"><a href="/"><img src="/style/images/logo.png" alt="" data-src="/images/logo.png" data-ret="/images/logo.png" class="retina" /></a></div>
-        </div>
-        <!--/.container -->
-        <nav class="collapse navbar-collapse text-center">
-          <ul class="nav navbar-nav">
-            <li><a href="/">Home</a>
-            <li><a href="/gives/campaigns">Give</a>
-            </li>
-            <%#
-            <li><a href="about.html">About Us</a></li>
-            %>
-            <li class="dropdown"><a href="#" class="dropdown-toggle js-activated">Our SNS</a>
-              <ul class="dropdown-menu">
-                <li><a href="https://www.facebook.com/groups/sportscharitydream/">FACEBOOK GROUP</a></li>
-                <li><a href="https://www.facebook.com/runningcamel">FACEBOOK PAGE</a></li>
-              </ul>
-            </li>
-            <li><a href="/runnings/member">members</a>
-            </li>
-            <%#
-            <li><a href="services.html">Services</a></li>
-            <li class="dropdown"><a href="#" class="dropdown-toggle js-activated">Features</a>
-              <ul class="dropdown-menu">
-                <li class="dropdown-submenu"><a href="#">Sliders</a>
-                  <ul class="dropdown-menu">
-                    <li><a href="index.html">Revolution Slider</a></li>
-                    <li><a href="index2.html">Fotorama</a></li>
-                    <li><a href="index5.html">Divas Slider</a></li>
-                    <li><a href="portfolio-post.html">Swiper</a></li>
-                    <li><a href="portfolio-post3.html">Owl Carousel</a></li>
-                  </ul>
-                </li>
-                <li><a href="elements.html">Elements</a></li>
-                <li><a href="headings.html">Headings</a></li>
-                <li><a href="pricing.html">Pricing Tables</a></li>
-                <li><a href="budicon.html">Font Icons - Budicon</a></li>
-                <li><a href="fontello.html">Font Icons - Fontello</a></li>
-              </ul>
-            </li>
-            %>
-            <%if user_signed_in? %>
-               <li><a href="/runnings/mypage">mypage</a></li>
-               <li><a href="<%=destroy_user_session_path%>">logout</a></li>
-            <%else%>
-            <li><a href="<%=user_omniauth_authorize_path(:facebook)%>">logIN</a></li>
-            <li><a href="<%=user_omniauth_authorize_path(:facebook)%>">JOIN</a></li>
-            <%end%>
-          </ul>
-        </nav>
-      </div>
-      <!--/.navbar-header --> 
       
-    </div>
-    <!--/.navbar -->
 
     <%= yield %>
   <footer class="footer black-wrapper widget-footer">
