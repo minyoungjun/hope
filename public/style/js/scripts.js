@@ -289,27 +289,6 @@ $(document).ready(function()
 				});
 			});
 /*-----------------------------------------------------------------------------------*/
-/*	STICKY HEADER
-/*-----------------------------------------------------------------------------------*/
-$(document).ready(function () {
-
-    var menu = $('.navbar'),
-        pos = menu.offset();
-
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > pos.top + menu.height() && menu.hasClass('default') && $(this).scrollTop() > 300) {
-            menu.fadeOut('fast', function () {
-                $(this).removeClass('default').addClass('fixed').fadeIn('fast');
-            });
-        } else if ($(this).scrollTop() <= pos.top + 300 && menu.hasClass('fixed')) {
-            menu.fadeOut(0, function () {
-                $(this).removeClass('fixed').addClass('default').fadeIn(0);
-            });
-        }
-    });
-
-});
-/*-----------------------------------------------------------------------------------*/
 /*	MENU
 /*-----------------------------------------------------------------------------------*/
 $(document).ready(function () {
