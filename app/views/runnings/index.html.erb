@@ -1,0 +1,133 @@
+  
+  <div class="offset2"></div>
+  <!-- /.light-wrapper -->
+  <div class="light-wrapper">
+    <div class="container inner">
+      <h1 class="intro text-center">기부러너즈는 누구나 참여할 수 있는 캠페인입니다.</h1>
+      <p class="lead main text-center">우리는 스포츠와 기부를 연결하는 문화를 만들어갑니다.</p>
+      <h3 class="section-title text-center">Let's make something great together</h3>
+      <div class="text-center"/> <a href="<%=user_omniauth_authorize_path(:facebook)%>" class="btn btn-large fixed-width">캠페인 참여</a> <a href="/gives/campaigns" class="btn btn-large btn-maroon fixed-width">기부하기</a> </div>
+      <div class="text-center" style="margin-top: 27px;">
+        <div class="fb-like" data-href="https://facebook.com/runningcamel" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+    </div>
+
+    </div>
+
+    <!-- /.container --> 
+ <div class="portfolio full-portfolio">
+      <div class="isotope items">
+
+        <%User.all.shuffle[0..19].each do |user|%>
+        <div class="item grid-sizer web" style="background:url('https://graph.facebook.com/v2.1/<%=user.identities.first.uid%>/picture?type=large');background-size: 100%;background-position: center; ">
+          <figure><a href="https://www.facebook.com/<%=user.identities.first.uid%>" style="color:white;">
+            <div class="text-overlay">
+              <div class="info"><%=user.name%><%if user.hometown != nil%>(<%=user.hometown%>)<%end%><%if user.pledge != nil%><br><%=user.pledge%><%end%></div>
+            </div>
+            <img src="/style/images/art/pm2.jpg" alt="" style="opacity: 0;filter: alpha(opacity=0);"/></a></figure>
+        </div>
+      <%end%>
+
+
+      </div>
+    </div>
+
+  </div>
+  <!-- /.light-wrapper -->
+
+  <div class="dark-wrapper">
+    <div class="container inner">
+      <h3 class="section-title pull-left">Latest Instagram Shots about #giverunner #giverunners #기부러너 #기부러너즈</h3>
+      <a href="http://instagram.com/seunghunkim" class="link-out pull-right"><i class="icon-s-instagram rp5"></i>Go to Giverunner Instagram Page</a>
+      <div class="clearfix"></div>
+      <div class="owl-gallery">
+        <%0.upto(9) do |x|%>
+          <div class="item">
+            <figure><a href="<%=@insta_link[x]%>">
+              <div class="text-overlay">
+                <div class="info"><span>See Instagram</span></div>
+              </div>
+              <img src="<%=@insta_thumb[x]%>" alt="" /> </a></figure>
+          </div>
+        <%end%>
+      </div>
+    </div>
+  </div>
+
+ <div class="light-wrapper">
+    <div class="container inner">
+      <h3 class="section-title pull-left">Sports Chariting Group Recent Postings</h3>
+      <a href="http://www.facebook.com/groups/sportscharitydream" class="link-out pull-right"><i class="icon-s-facebook rp5"></i>Go to Giverunner Facebook Group</a>
+      <div class="clearfix"></div>
+      <div class="latest-blog-wrapper">
+        <div class="latest-blog isotope isotope js-isotope row" data-isotope-options='{ "layoutMode": "fitRows", "itemSelector": ".post" }'>
+
+          <%0.upto(3) do |x|%>
+            <div class="post col-sm-12 col-md-6 row">
+              <div class="col-sm-4">
+                <figure class="icon-overlay"><a href="<%=@fb_link[x]%>"><img src="<%if @fb_thumb[x] != nil%><%=@fb_thumb[x]%><%else%>/images/logo_thumb.png<%end%>" alt="" /></a></figure>
+              </div>
+              <div class="col-sm-8 post-content">
+                <h3 class="post-title"><a href="https://www.facebook.com/<%=@fb_name[x]["id"]%>"><%=@fb_name[x]["name"]%></a></h3>
+                <div class="meta"><span class="date"><%=@fb_time[x]%></span> <span class="comments"><a href="#"><%=@fb_comments[x]%> Comments</a></span></div>
+                <a style ="color:#2f2f2f;"href="<%=@fb_link[x]%>"><p><%if @fb_text[x].length > 80 %><%=@fb_text[x][0..79]%>...<%else%><%=@fb_text[x]%><%end%></p></a>
+              </div>
+            </div>
+          <%end%>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="parallax parallax1 customers">
+    <div class="container inner text-center">
+      <h3 class="section-title text-center">What Do We Think</h3>
+      <div class="testimonials owl-carousel thin">
+        <div class="item">
+          <blockquote>
+            <p>No one has ever become poor by giving.<small>Anne Frank</small></p>
+          </blockquote>
+        </div>
+        <!-- /.item -->
+        <div class="item">
+          <blockquote>
+            <p>'기부러너'는 스포츠 활동을 통하여 기부하는 기쁨을 많은 사람이 함께 누렸으면 좋겠다는 생각에서 시작한 프로젝트입니다. 저는 이 프로젝트를 통해 모든 사람들이 달리기, 걷기, 등산, 사이클링과 같은 다양한 운동을 통해 기부를 할 수 있는 세상을 만들고 싶습니다. 또한, 운동을 좋아하지 않는 사람도 다른 사람의 프로젝트를 응원함으로써 간접적으로 도움을 줄 수 있습니다. 프로젝트 진행자는 SNS와 본 사이트를 통해 프로젝트의 진행사항을 실시간으로 올려, 응원자들과 함께하는 멋진 기부 문화를 만들어갈 것입니다.</p>
+          </blockquote>
+        </div>
+        <!-- /.item -->
+        <div class="item">
+          <blockquote>
+            <p>Give + Runner is a social project that I started to combine my passions with charity, exercise, and people. With this project, I hope to create an environment where everybody can donate with sports activities like running, walking, climbing and cycling. Also someone who is not fond of doing sports activities themselves can help by supporting others' projects. Project "runners" can share real-time progress of their projects via our website and social network services. This will become an another donation led by all.</p>
+          </blockquote>
+        </div>
+        <!-- /.item --> 
+      </div>
+      <!-- /.testimonials --> 
+      
+    </div>
+    <!-- /.container --> 
+  </div>
+  <!-- /.parallax -->
+
+<div class="light-wrapper">
+  <div class="container inner">
+    <h3 class="section-title">후원 대상 기관</h3>
+    <div class="owl-blog">
+      <% Campaign.where(:authorized => true).shuffle.each do |campaign|%>
+        <div class="post">
+          <figure class="icon-overlay"><a href="<%=campaign.site_url%>"><img src="<%=campaign.logo.url(:medium)%>"/></a></figure>
+          <div class="post-content">
+            <h3 class="post-title"><a href="<%=campaign.site_url%>"><%=campaign.title%></a></h3>
+            <div class="meta"><span class="date"><%=campaign.category%></span> <span class="comments"><a href="#"><%=campaign.fundraisers.count%> followers</a></span></div>
+          </div>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</div> 
+
+
+  
+    
+  

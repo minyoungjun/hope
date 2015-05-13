@@ -1,0 +1,34 @@
+
+  <div class="offset2"></div>
+  <div class="light-wrapper">
+    <div class="container inner">
+      <h3 class="section-title">캠페인에 동참해 주시는 분들(총 <%=User.count%>명)</h3>
+        <% member_number = 1%>
+        <%User.all.shuffle.each do |user|%>
+          <%if member_number%3 == 1%>
+          <div class="row team">
+          <%end%>
+          <div class="col-sm-4">
+            <figure class="icon-overlay">
+              <div style="border-radius: 50%; width:200px; height:200px; margin: 0 auto; display:block; max-width:100%; -webkit-backface-visibility: hidden; transition: all 0.3s ease-out; vertical-align: middle; border:0; background:url('https://graph.facebook.com/v2.1/<%=user.identities.first.uid%>/picture?type=large');"></div>
+            </figure>
+            <div class="post-content text-center">
+              <h3 class="post-title"><%=user.name%>(<%=user.hometown%>)<span class="meta"><%=user.distance%></span></h3>
+              <p><%=user.pledge%></p>
+              <ul class="social">
+                <li><a href="https://www.facebook.com/<%=user.identities.first.uid%>"><i class="icon-s-facebook"></i></a></li>
+              </ul>
+            </div>
+          </div>
+          <%if member_number%3 == 0%>
+            </div>
+            <div class="divide25"></div>
+          <%end%>
+          <% member_number = member_number + 1%>
+        <%end%>
+
+
+    </div>
+  </div>
+  <!-- /.light-wrapper -->
+  
