@@ -163,8 +163,13 @@ var flipCounter = function(d, options){
 
     x = counter.value.toFixed(counter.decimals);
 
-    if (counter.value <= counter.upper - 200){
-      counter.value += parseInt((counter.upper - counter.value)/2000)*100 + 100;
+    if (counter.value < counter.upper){
+      if ((counter.upper - counter.value) > 200){
+        counter.value += parseInt((counter.upper - counter.value)/2000)*100 + 100;
+      }else{
+        counter.value = counter.upper;
+      }
+
     }else{
       counter.value = counter.upper;
     }
