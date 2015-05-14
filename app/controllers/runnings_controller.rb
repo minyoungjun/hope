@@ -20,7 +20,7 @@ class RunningsController < ApplicationController
       long = doc["data"][0]["values"][0]["value"]
       @comment_count += long["comment"].to_i
       @like_count += long["like"].to_i
-      @share_count += long["share_count"].to_i
+      @share_count += long["share"].to_i
     end
 
     @all_count = @comment_count + @like_count + @share_count
