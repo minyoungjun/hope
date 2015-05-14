@@ -14,16 +14,18 @@ class RunningsController < ApplicationController
     @comment_count = 0
     @like_count = 0
     @share_count = 0
-
+    @view_count = 0
     Post.all.each do |post|
       doc = JSON.parse(open("https://graph.facebook.com/v2.3/#{post.post_id}/insights/post_story_adds_by_action_type/lifetime?access_token=#{Grouptoken.last.token}").read)
+      doc2 = JSON.parse(open("https://graph.facebook.com/v2.3/#{post.post_id}/insights/post_video_views?access_token=#{Grouptoken.last.token}").read)
       long = doc["data"][0]["values"][0]["value"]
+      @view_count += doc2["data"][0]["values"][0]["value"].to_i
       @comment_count += long["comment"].to_i
       @like_count += long["like"].to_i
       @share_count += long["share"].to_i
     end
 
-    @all_count = @comment_count + @like_count + @share_count
+    @all_count = @comment_count + @like_count + @share_count + @view_count
 
   end
 end
